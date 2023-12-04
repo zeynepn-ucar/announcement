@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "qaPaYfUdhiAXwSvKVKIWSm17JnUpGlDjlGOtR7GrqoU=",
+  "Source": "Coren.OnlinePortal.Api",
+  "BasePath": "_content/Coren.OnlinePortal.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

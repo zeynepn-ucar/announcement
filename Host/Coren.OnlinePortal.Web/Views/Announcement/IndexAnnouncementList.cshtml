@@ -1,0 +1,60 @@
+﻿@model Coren.OnlinePortal.Web.Models.ViewModels.AnnouncementListViewModel
+
+@{
+    ViewData["Title"] = "Announcements";
+}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Announcements</h2>
+
+    <div class="row">
+        @foreach (var announcement in Model.Announcements.Where(s => s.ShowHomePage).OrderByDescending(s => s.CreatedDate))
+        {
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <img src="~/img/announcement.png" class="card-img-top" alt="Announcement Logo">
+
+                    <div class="card-body">
+                        <h5 class="card-title">@announcement.Title</h5>
+                        <h6 class="card-text">@announcement.Description</h6>
+                        <p class="card-text">@announcement.CreatedDate.ToString("dd/MM/yyyy HH:mm")</p>
+                        <a href="#" class="btn btn-primary content-link" data-bs-toggle="modal" data-bs-target="#announcementModal" data-content="@announcement.Content">Read More</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="announcementModal" tabindex="-1" role="dialog" aria-labelledby="announcementModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="announcementModalLabel">Announcement Content</h5>
+
+            </div>
+            <div class="modal-body">
+                <p id="announcementContent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@if (ViewData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["ErrorMessage"]
+    </div>
+}
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $(".content-link").click(function () {
+                var content = $(this).data("content");
+                $("#announcementContent").text(content);
+            });
+        });
+    </script>
+}

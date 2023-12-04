@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Coren.OnlinePortal.Api.props" />
+</Project>
